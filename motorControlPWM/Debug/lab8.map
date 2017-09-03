@@ -1,0 +1,260 @@
+******************************************************************************
+                  TI ARM Linker PC v5.2.5                      
+******************************************************************************
+>> Linked Fri Nov 04 09:53:12 2016
+
+OUTPUT FILE NAME:   <lab8.out>
+ENTRY POINT SYMBOL: "_c_int00"  address: 000008b1
+
+
+MEMORY CONFIGURATION
+
+         name            origin    length      used     unused   attr    fill
+----------------------  --------  ---------  --------  --------  ----  --------
+  MAIN                  00000000   00040000  00000c4c  0003f3b4  R  X
+  INFO                  00200000   00004000  00000000  00004000  R  X
+  SRAM_CODE             01000000   00010000  00000000  00010000  RW X
+  SRAM_DATA             20000000   00010000  00000234  0000fdcc  RW  
+
+
+SEGMENT ALLOCATION MAP
+
+run origin  load origin   length   init length attrs members
+----------  ----------- ---------- ----------- ----- -------
+00000000    00000000    00000c50   00000c50    r-x
+  00000000    00000000    00000140   00000140    r-- .intvecs
+  00000140    00000140    00000a34   00000a34    r-x .text
+  00000b74    00000b74    000000b0   000000b0    r-- .const
+  00000c28    00000c28    00000028   00000028    r-- .cinit
+20000000    20000000    00000034   00000000    rw-
+  20000000    20000000    00000034   00000000    rw- .data
+2000fe00    2000fe00    00000200   00000000    rw-
+  2000fe00    2000fe00    00000200   00000000    rw- .stack
+
+
+SECTION ALLOCATION MAP
+
+ output                                  attributes/
+section   page    origin      length       input sections
+--------  ----  ----------  ----------   ----------------
+.intvecs   0    00000000    00000140     
+                  00000000    00000140     msp432_startup_ccs.obj (.intvecs:retain)
+
+.text      0    00000140    00000a34     
+                  00000140    00000264     low_level_code.obj (.text)
+                  000003a4    00000154     msp432p4xx_driverlib.lib : adc14.o (.text:_getIndexForMemRegister)
+                  000004f8    000000e8                              : cs.o (.text:CS_setDCOFrequency)
+                  000005e0    000000e0                              : cs.o (.text:CS_initClockSignal)
+                  000006c0    0000009c     rtsv7M4_T_le_v4SPD16_eabi.lib : memcpy_t2.obj (.text)
+                  0000075c    0000007a                                   : memset_t2.obj (.text)
+                  000007d6    00000002     --HOLE-- [fill = 0]
+                  000007d8    0000006c                                   : autoinit.obj (.text)
+                  00000844    0000006a                                   : copy_decompress_rle.obj (.text)
+                  000008ae    00000002     --HOLE-- [fill = 0]
+                  000008b0    00000050                                   : boot.obj (.text)
+                  00000900    0000004c     msp432p4xx_driverlib.lib : gpio.o (.text:GPIO_setAsPeripheralModuleFunctionInputPin)
+                  0000094c    0000004c     rtsv7M4_T_le_v4SPD16_eabi.lib : cpy_tbl.obj (.text)
+                  00000998    00000044                                   : exit.obj (.text)
+                  000009dc    00000030     msp432p4xx_driverlib.lib : cs.o (.text:CS_tuneDCOFrequency)
+                  00000a0c    00000030                              : gpio.o (.text:GPIO_setAsInputPinWithPullUpResistor)
+                  00000a3c    00000024                              : cs.o (.text:CS_setDCOCenteredFrequency)
+                  00000a60    00000024                              : gpio.o (.text:GPIO_setAsOutputPin)
+                  00000a84    0000001c                              : gpio.o (.text:GPIO_getInputPinValue)
+                  00000aa0    00000018                              : adc14.o (.text:ADC14_getResult)
+                  00000ab8    00000018                              : gpio.o (.text:GPIO_setOutputLowOnPin)
+                  00000ad0    00000018                              : wdt_a.o (.text:WDT_A_holdTimer)
+                  00000ae8    00000018     rtsv7M4_T_le_v4SPD16_eabi.lib : args_main.obj (.text)
+                  00000b00    00000014     msp432p4xx_driverlib.lib : adc14.o (.text:ADC14_isBusy)
+                  00000b14    00000014                              : adc14.o (.text:ADC14_setResolution)
+                  00000b28    00000014                              : gpio.o (.text:GPIO_setOutputHighOnPin)
+                  00000b3c    00000014     rtsv7M4_T_le_v4SPD16_eabi.lib : _lock.obj (.text)
+                  00000b50    0000000e                                   : copy_decompress_none.obj (.text:decompress:none)
+                  00000b5e    0000000c     msp432_startup_ccs.obj (.text)
+                  00000b6a    00000006     rtsv7M4_T_le_v4SPD16_eabi.lib : copy_decompress_rle.obj (.text:decompress:rle24)
+                  00000b70    00000004                                   : pre_init.obj (.text)
+
+.const     0    00000b74    000000b0     
+                  00000b74    00000080     msp432p4xx_driverlib.lib : adc14.o (.const:_ctlRegs)
+                  00000bf4    00000030                              : gpio.o (.const:GPIO_PORT_TO_BASE)
+
+.cinit     0    00000c28    00000028     
+                  00000c28    00000015     (.cinit..data.load) [load image, compression = rle]
+                  00000c3d    00000003     --HOLE-- [fill = 0]
+                  00000c40    00000008     (__TI_handler_table)
+                  00000c48    00000008     (__TI_cinit_table)
+
+.init_array 
+*          0    00000000    00000000     UNINITIALIZED
+
+.data      0    20000000    00000034     UNINITIALIZED
+                  20000000    00000020     low_level_code.obj (.data)
+                  20000020    00000008     rtsv7M4_T_le_v4SPD16_eabi.lib : _lock.obj (.data)
+                  20000028    00000008                                   : exit.obj (.data)
+                  20000030    00000004                                   : stkdepth_vars.obj (.data)
+
+.TI.persistent 
+*          0    20000000    00000000     UNINITIALIZED
+
+.stack     0    2000fe00    00000200     UNINITIALIZED
+                  2000fe00    00000200     --HOLE--
+
+
+LINKER GENERATED COPY TABLES
+
+__TI_cinit_table @ 00000c48 records: 1, size/record: 8, table size: 8
+	.data: load addr=00000c28, load size=00000015 bytes, run addr=20000000, run size=00000034 bytes, compression=rle
+
+
+LINKER GENERATED HANDLER TABLE
+
+__TI_handler_table @ 00000c40 records: 2, size/record: 4, table size: 8
+	index: 0, handler: __TI_decompress_rle24
+	index: 1, handler: __TI_decompress_none
+
+
+GLOBAL SYMBOLS: SORTED ALPHABETICALLY BY Name 
+
+address   name                                      
+-------   ----                                      
+00000aa1  ADC14_getResult                           
+00000b01  ADC14_isBusy                              
+00000b15  ADC14_setResolution                       
+00000999  C$$EXIT                                   
+000005e1  CS_initClockSignal                        
+00000a3d  CS_setDCOCenteredFrequency                
+000004f9  CS_setDCOFrequency                        
+000009dd  CS_tuneDCOFrequency                       
+00000a85  GPIO_getInputPinValue                     
+00000a0d  GPIO_setAsInputPinWithPullUpResistor      
+00000a61  GPIO_setAsOutputPin                       
+00000901  GPIO_setAsPeripheralModuleFunctionInputPin
+00000b29  GPIO_setOutputHighOnPin                   
+00000ab9  GPIO_setOutputLowOnPin                    
+UNDEFED   SHT$$INIT_ARRAY$$Base                     
+UNDEFED   SHT$$INIT_ARRAY$$Limit                    
+4000480c  WDTCTL_SYM                                
+00000ad1  WDT_A_holdTimer                           
+20010000  __STACK_END                               
+00000200  __STACK_SIZE                              
+00000c48  __TI_CINIT_Base                           
+00000c50  __TI_CINIT_Limit                          
+00000c40  __TI_Handler_Table_Base                   
+00000c48  __TI_Handler_Table_Limit                  
+000007d9  __TI_auto_init                            
+20000028  __TI_cleanup_ptr                          
+00000b51  __TI_decompress_none                      
+00000b6b  __TI_decompress_rle24                     
+2000002c  __TI_dtors_ptr                            
+00000000  __TI_static_base__                        
+0000075d  __aeabi_memclr                            
+0000075d  __aeabi_memclr4                           
+0000075d  __aeabi_memclr8                           
+000006c1  __aeabi_memcpy                            
+000006c1  __aeabi_memcpy4                           
+000006c1  __aeabi_memcpy8                           
+0000075f  __aeabi_memset                            
+0000075f  __aeabi_memset4                           
+0000075f  __aeabi_memset8                           
+ffffffff  __binit__                                 
+ffffffff  __c_args__                                
+2000fe00  __stack                                   
+00000ae9  _args_main                                
+000008b1  _c_int00                                  
+20000020  _lock                                     
+00000b4b  _nop                                      
+00000b43  _register_lock                            
+00000b3d  _register_unlock                          
+00000b71  _system_pre_init                          
+20000024  _unlock                                   
+0000099d  abort                                     
+ffffffff  binit                                     
+20000018  button1                                   
+2000001c  button2                                   
+0000094d  copy_in                                   
+20000000  dcoFrequency                              
+2000000c  duty                                      
+000009a5  exit                                      
+20000010  forward                                   
+00000000  interruptVectors                          
+00000141  main                                      
+20000030  main_func_sp                              
+000006c1  memcpy                                    
+00000765  memset                                    
+20000014  reverse                                   
+20000008  speed                                     
+20000004  voltage                                   
+
+
+GLOBAL SYMBOLS: SORTED BY Symbol Address 
+
+address   name                                      
+-------   ----                                      
+00000000  __TI_static_base__                        
+00000000  interruptVectors                          
+00000141  main                                      
+00000200  __STACK_SIZE                              
+000004f9  CS_setDCOFrequency                        
+000005e1  CS_initClockSignal                        
+000006c1  __aeabi_memcpy                            
+000006c1  __aeabi_memcpy4                           
+000006c1  __aeabi_memcpy8                           
+000006c1  memcpy                                    
+0000075d  __aeabi_memclr                            
+0000075d  __aeabi_memclr4                           
+0000075d  __aeabi_memclr8                           
+0000075f  __aeabi_memset                            
+0000075f  __aeabi_memset4                           
+0000075f  __aeabi_memset8                           
+00000765  memset                                    
+000007d9  __TI_auto_init                            
+000008b1  _c_int00                                  
+00000901  GPIO_setAsPeripheralModuleFunctionInputPin
+0000094d  copy_in                                   
+00000999  C$$EXIT                                   
+0000099d  abort                                     
+000009a5  exit                                      
+000009dd  CS_tuneDCOFrequency                       
+00000a0d  GPIO_setAsInputPinWithPullUpResistor      
+00000a3d  CS_setDCOCenteredFrequency                
+00000a61  GPIO_setAsOutputPin                       
+00000a85  GPIO_getInputPinValue                     
+00000aa1  ADC14_getResult                           
+00000ab9  GPIO_setOutputLowOnPin                    
+00000ad1  WDT_A_holdTimer                           
+00000ae9  _args_main                                
+00000b01  ADC14_isBusy                              
+00000b15  ADC14_setResolution                       
+00000b29  GPIO_setOutputHighOnPin                   
+00000b3d  _register_unlock                          
+00000b43  _register_lock                            
+00000b4b  _nop                                      
+00000b51  __TI_decompress_none                      
+00000b6b  __TI_decompress_rle24                     
+00000b71  _system_pre_init                          
+00000c40  __TI_Handler_Table_Base                   
+00000c48  __TI_CINIT_Base                           
+00000c48  __TI_Handler_Table_Limit                  
+00000c50  __TI_CINIT_Limit                          
+20000000  dcoFrequency                              
+20000004  voltage                                   
+20000008  speed                                     
+2000000c  duty                                      
+20000010  forward                                   
+20000014  reverse                                   
+20000018  button1                                   
+2000001c  button2                                   
+20000020  _lock                                     
+20000024  _unlock                                   
+20000028  __TI_cleanup_ptr                          
+2000002c  __TI_dtors_ptr                            
+20000030  main_func_sp                              
+2000fe00  __stack                                   
+20010000  __STACK_END                               
+4000480c  WDTCTL_SYM                                
+ffffffff  __binit__                                 
+ffffffff  __c_args__                                
+ffffffff  binit                                     
+UNDEFED   SHT$$INIT_ARRAY$$Base                     
+UNDEFED   SHT$$INIT_ARRAY$$Limit                    
+
+[67 symbols]

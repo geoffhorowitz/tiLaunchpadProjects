@@ -1,0 +1,247 @@
+******************************************************************************
+                  TI ARM Linker PC v5.2.5                      
+******************************************************************************
+>> Linked Wed Oct 05 16:10:34 2016
+
+OUTPUT FILE NAME:   <puttyEcho.out>
+ENTRY POINT SYMBOL: "_c_int00"  address: 00000645
+
+
+MEMORY CONFIGURATION
+
+         name            origin    length      used     unused   attr    fill
+----------------------  --------  ---------  --------  --------  ----  --------
+  MAIN                  00000000   00040000  000008d4  0003f72c  R  X
+  INFO                  00200000   00004000  00000000  00004000  R  X
+  SRAM_CODE             01000000   00010000  00000000  00010000  RW X
+  SRAM_DATA             20000000   00010000  00000320  0000fce0  RW  
+
+
+SEGMENT ALLOCATION MAP
+
+run origin  load origin   length   init length attrs members
+----------  ----------- ---------- ----------- ----- -------
+00000000    00000000    000008d8   000008d8    r-x
+  00000000    00000000    00000140   00000140    r-- .intvecs
+  00000140    00000140    000006f8   000006f8    r-x .text
+  00000838    00000838    00000054   00000054    r-- .const
+  00000890    00000890    00000048   00000048    r-- .cinit
+20000000    20000000    00000120   00000000    rw-
+  20000000    20000000    000000fc   00000000    rw- .bss
+  200000fc    200000fc    00000024   00000000    rw- .data
+2000fe00    2000fe00    00000200   00000000    rw-
+  2000fe00    2000fe00    00000200   00000000    rw- .stack
+
+
+SECTION ALLOCATION MAP
+
+ output                                  attributes/
+section   page    origin      length       input sections
+--------  ----  ----------  ----------   ----------------
+.intvecs   0    00000000    00000140     
+                  00000000    00000140     msp432_startup_ccs.obj (.intvecs:retain)
+
+.text      0    00000140    000006f8     
+                  00000140    0000014c     main.obj (.text)
+                  0000028c    000000e8     msp432p4xx_driverlib.lib : cs.o (.text:CS_setDCOFrequency)
+                  00000374    000000e0                              : cs.o (.text:CS_initClockSignal)
+                  00000454    0000009c     rtsv7M4_T_le_v4SPD16_eabi.lib : memcpy_t2.obj (.text)
+                  000004f0    0000007a                                   : memset_t2.obj (.text)
+                  0000056a    00000002     --HOLE-- [fill = 0]
+                  0000056c    0000006c                                   : autoinit.obj (.text)
+                  000005d8    0000006a                                   : copy_decompress_rle.obj (.text)
+                  00000642    00000002     --HOLE-- [fill = 0]
+                  00000644    00000050                                   : boot.obj (.text)
+                  00000694    0000004c     msp432p4xx_driverlib.lib : gpio.o (.text:GPIO_setAsPeripheralModuleFunctionInputPin)
+                  000006e0    0000004c     rtsv7M4_T_le_v4SPD16_eabi.lib : cpy_tbl.obj (.text)
+                  0000072c    00000044                                   : exit.obj (.text)
+                  00000770    00000030     msp432p4xx_driverlib.lib : cs.o (.text:CS_tuneDCOFrequency)
+                  000007a0    00000024                              : cs.o (.text:CS_setDCOCenteredFrequency)
+                  000007c4    00000018                              : wdt_a.o (.text:WDT_A_holdTimer)
+                  000007dc    00000018     rtsv7M4_T_le_v4SPD16_eabi.lib : args_main.obj (.text)
+                  000007f4    00000014                                   : _lock.obj (.text)
+                  00000808    0000000e                                   : copy_decompress_none.obj (.text:decompress:none)
+                  00000816    0000000c                                   : copy_zero_init.obj (.text:decompress:ZI)
+                  00000822    0000000c     msp432_startup_ccs.obj (.text)
+                  0000082e    00000006     rtsv7M4_T_le_v4SPD16_eabi.lib : copy_decompress_rle.obj (.text:decompress:rle24)
+                  00000834    00000004                                   : pre_init.obj (.text)
+
+.const     0    00000838    00000054     
+                  00000838    00000030     msp432p4xx_driverlib.lib : gpio.o (.const:GPIO_PORT_TO_BASE)
+                  00000868    00000024     main.obj (.const:UART_init)
+
+.cinit     0    00000890    00000048     
+                  00000890    0000001d     (.cinit..data.load) [load image, compression = rle]
+                  000008ad    00000003     --HOLE-- [fill = 0]
+                  000008b0    0000000c     (__TI_handler_table)
+                  000008bc    00000004     --HOLE-- [fill = 0]
+                  000008c0    00000008     (.cinit..bss.load) [load image, compression = zero_init]
+                  000008c8    00000010     (__TI_cinit_table)
+
+.init_array 
+*          0    00000000    00000000     UNINITIALIZED
+
+.bss       0    20000000    000000fc     UNINITIALIZED
+                  20000000    000000fc     main.obj (.bss:receiveBuffer)
+
+.TI.noinit 
+*          0    20000000    00000000     UNINITIALIZED
+
+.data      0    200000fc    00000024     UNINITIALIZED
+                  200000fc    00000010     main.obj (.data)
+                  2000010c    00000008     rtsv7M4_T_le_v4SPD16_eabi.lib : _lock.obj (.data)
+                  20000114    00000008                                   : exit.obj (.data)
+                  2000011c    00000004                                   : stkdepth_vars.obj (.data)
+
+.TI.persistent 
+*          0    200000fc    00000000     UNINITIALIZED
+
+.stack     0    2000fe00    00000200     UNINITIALIZED
+                  2000fe00    00000200     --HOLE--
+
+
+LINKER GENERATED COPY TABLES
+
+__TI_cinit_table @ 000008c8 records: 2, size/record: 8, table size: 16
+	.data: load addr=00000890, load size=0000001d bytes, run addr=200000fc, run size=00000024 bytes, compression=rle
+	.bss: load addr=000008c0, load size=00000008 bytes, run addr=20000000, run size=000000fc bytes, compression=zero_init
+
+
+LINKER GENERATED HANDLER TABLE
+
+__TI_handler_table @ 000008b0 records: 3, size/record: 4, table size: 12
+	index: 0, handler: __TI_decompress_rle24
+	index: 1, handler: __TI_decompress_none
+	index: 2, handler: __TI_zero_init
+
+
+GLOBAL SYMBOLS: SORTED ALPHABETICALLY BY Name 
+
+address   name                                      
+-------   ----                                      
+0000072d  C$$EXIT                                   
+00000375  CS_initClockSignal                        
+000007a1  CS_setDCOCenteredFrequency                
+0000028d  CS_setDCOFrequency                        
+00000771  CS_tuneDCOFrequency                       
+00000695  GPIO_setAsPeripheralModuleFunctionInputPin
+UNDEFED   SHT$$INIT_ARRAY$$Base                     
+UNDEFED   SHT$$INIT_ARRAY$$Limit                    
+00000868  UART_init                                 
+4000480c  WDTCTL_SYM                                
+000007c5  WDT_A_holdTimer                           
+20010000  __STACK_END                               
+00000200  __STACK_SIZE                              
+000008c8  __TI_CINIT_Base                           
+000008d8  __TI_CINIT_Limit                          
+000008b0  __TI_Handler_Table_Base                   
+000008bc  __TI_Handler_Table_Limit                  
+0000056d  __TI_auto_init                            
+20000114  __TI_cleanup_ptr                          
+00000809  __TI_decompress_none                      
+0000082f  __TI_decompress_rle24                     
+20000118  __TI_dtors_ptr                            
+00000000  __TI_static_base__                        
+00000817  __TI_zero_init                            
+000004f1  __aeabi_memclr                            
+000004f1  __aeabi_memclr4                           
+000004f1  __aeabi_memclr8                           
+00000455  __aeabi_memcpy                            
+00000455  __aeabi_memcpy4                           
+00000455  __aeabi_memcpy8                           
+000004f3  __aeabi_memset                            
+000004f3  __aeabi_memset4                           
+000004f3  __aeabi_memset8                           
+ffffffff  __binit__                                 
+ffffffff  __c_args__                                
+2000fe00  __stack                                   
+000007dd  _args_main                                
+00000645  _c_int00                                  
+2000010c  _lock                                     
+00000803  _nop                                      
+000007fb  _register_lock                            
+000007f5  _register_unlock                          
+00000835  _system_pre_init                          
+20000110  _unlock                                   
+00000731  abort                                     
+ffffffff  binit                                     
+20000108  carriageReturn                            
+000006e1  copy_in                                   
+200000fc  count                                     
+00000739  exit                                      
+20000100  i                                         
+00000000  interruptVectors                          
+00000141  main                                      
+2000011c  main_func_sp                              
+00000455  memcpy                                    
+000004f9  memset                                    
+20000104  newLine                                   
+20000000  receiveBuffer                             
+00000225  uart_isr                                  
+
+
+GLOBAL SYMBOLS: SORTED BY Symbol Address 
+
+address   name                                      
+-------   ----                                      
+00000000  __TI_static_base__                        
+00000000  interruptVectors                          
+00000141  main                                      
+00000200  __STACK_SIZE                              
+00000225  uart_isr                                  
+0000028d  CS_setDCOFrequency                        
+00000375  CS_initClockSignal                        
+00000455  __aeabi_memcpy                            
+00000455  __aeabi_memcpy4                           
+00000455  __aeabi_memcpy8                           
+00000455  memcpy                                    
+000004f1  __aeabi_memclr                            
+000004f1  __aeabi_memclr4                           
+000004f1  __aeabi_memclr8                           
+000004f3  __aeabi_memset                            
+000004f3  __aeabi_memset4                           
+000004f3  __aeabi_memset8                           
+000004f9  memset                                    
+0000056d  __TI_auto_init                            
+00000645  _c_int00                                  
+00000695  GPIO_setAsPeripheralModuleFunctionInputPin
+000006e1  copy_in                                   
+0000072d  C$$EXIT                                   
+00000731  abort                                     
+00000739  exit                                      
+00000771  CS_tuneDCOFrequency                       
+000007a1  CS_setDCOCenteredFrequency                
+000007c5  WDT_A_holdTimer                           
+000007dd  _args_main                                
+000007f5  _register_unlock                          
+000007fb  _register_lock                            
+00000803  _nop                                      
+00000809  __TI_decompress_none                      
+00000817  __TI_zero_init                            
+0000082f  __TI_decompress_rle24                     
+00000835  _system_pre_init                          
+00000868  UART_init                                 
+000008b0  __TI_Handler_Table_Base                   
+000008bc  __TI_Handler_Table_Limit                  
+000008c8  __TI_CINIT_Base                           
+000008d8  __TI_CINIT_Limit                          
+20000000  receiveBuffer                             
+200000fc  count                                     
+20000100  i                                         
+20000104  newLine                                   
+20000108  carriageReturn                            
+2000010c  _lock                                     
+20000110  _unlock                                   
+20000114  __TI_cleanup_ptr                          
+20000118  __TI_dtors_ptr                            
+2000011c  main_func_sp                              
+2000fe00  __stack                                   
+20010000  __STACK_END                               
+4000480c  WDTCTL_SYM                                
+ffffffff  __binit__                                 
+ffffffff  __c_args__                                
+ffffffff  binit                                     
+UNDEFED   SHT$$INIT_ARRAY$$Base                     
+UNDEFED   SHT$$INIT_ARRAY$$Limit                    
+
+[59 symbols]

@@ -1,0 +1,1 @@
+"./low_level_code.obj" "./msp432_startup_ccs.obj" "../msp432p401r.cmd" "../msp432p4xx_driverlib.lib" -l"libc.a" 
